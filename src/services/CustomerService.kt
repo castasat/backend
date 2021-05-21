@@ -2,8 +2,6 @@ package backend.services
 
 import backend.models.Customer
 import backend.models.CustomerEntity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.kodein.di.DI
@@ -41,9 +39,3 @@ class CustomerService {
 fun DI.MainBuilder.bindServices() {
     bind<CustomerService>() with singleton { CustomerService() }
 }
-
-// TODO
-suspend fun <T> dbQuery(block: () -> T): T =
-    withContext(Dispatchers.IO) {
-        transaction { block() }
-    }

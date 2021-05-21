@@ -1,0 +1,10 @@
+// to run postgresql database on docker compose container
+sudo su
+docker-compose up &
+exit
+
+// to start backend
+run ApplicationKt from IntelliJ IDEa
+
+// to test HTTP REST API using curl
+./CustomerTest.http

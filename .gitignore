@@ -1,0 +1,12 @@
+/.gradle
+/.idea
+/out
+/build
+*.iml
+*.ipr
+*.iws
+/resources/dbconfig.properties
+/gradle/wrapper/gradle-wrapper.jar
+/logs/
+/docker-compose.yaml
+/gradlew

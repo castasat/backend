@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+######################################
+# POST http://localhost:8888/first_name
+# Content-Type: application/json
+# {
+#     "firstName": "Denis"
+# }
+######################################
+curl --verbose --header "Content-Type: application/json" --data "{\"firstNameId\":1,\"firstName\":\"Denis\"}" http://localhost:8888/first_name
+
+######################################
+# GET http://localhost:8888/
+######################################
+curl --verbose http://localhost:8888/
+
+######################################
+# GET http://localhost:8888/first_name
+# Accept application/json
+######################################
+curl --verbose --header "Accept: application/json" http://localhost:8888/first_name
+
+#########################################
+# GET http://localhost:8888/first_name/1
+#########################################
+curl --verbose http://localhost:8888/first_name/1
+
+############################################
+# DELETE http://localhost:8888/first_name/1
+############################################
+curl --verbose -X DELETE http://localhost:8888/first_name/1

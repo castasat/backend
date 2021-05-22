@@ -1,8 +1,8 @@
 package backend
 
-import backend.models.Customers
-import backend.routes.customerRoute
-import backend.services.bindServices
+import backend.data.models.FirstNamesTable
+import backend.routes.firstNameRoute
+import backend.services.FirstNameService
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.tomcat.EngineMain
@@ -13,7 +13,10 @@ import io.ktor.serialization.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.kodein.di.DI
+import org.kodein.di.bind
 import org.kodein.di.ktor.di
+import org.kodein.di.singleton
 import org.slf4j.LoggerFactory
 
 const val HIKARI_CONFIG_KEY = "ktor.hikariconfig"
@@ -29,9 +32,15 @@ fun Application.module(testing: Boolean = false) {
     install(CallLogging)
     install(ContentNegotiation) { json() }
 
-    di { bindServices() }
+    di {
+        // TODO bind services here
+        bindFirstNameService()
+    }
 
-    routing { customerRoute() }
+    routing {
+        // TODO add routing here
+        firstNameRoute()
+    }
 }
 
 fun Application.initDB() {
@@ -46,5 +55,10 @@ fun Application.initDB() {
 }
 
 private fun createTables() = transaction {
-    SchemaUtils.create(Customers)
+    // TODO create tables here
+    SchemaUtils.create(FirstNamesTable)
+}
+
+fun DI.MainBuilder.bindFirstNameService() {
+    bind<FirstNameService>() with singleton { FirstNameService() }
 }

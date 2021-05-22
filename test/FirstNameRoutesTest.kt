@@ -4,13 +4,13 @@ import io.ktor.server.testing.*
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class CustomerRoutesTest {
+class FirstNameRoutesTest {
     @Test
-    fun testGetCustomer() {
+    fun testGetFirstName() {
         withTestApplication({
             module(testing = true)
         }) {
-            handleRequest(HttpMethod.Get, "/customer")
+            handleRequest(HttpMethod.Get, "/first_name")
                 .apply {
                     assertEquals(
                         expected = HttpStatusCode.NotFound,

@@ -5,7 +5,10 @@ server.
 
 It has been tested to run on <b>Fedora 34</b> linux 
 machine with <b>PostgreSQL</b> database image loaded 
-into <b>Docker Compose</b>.
+into <b>Docker Compose</b>. 
+
+It also uses <b>JDBC Expose to connect database tables and 
+JVM object Entities</b>
 
 To run postgresql database on docker compose container:
 <code>
@@ -25,6 +28,6 @@ To test HTTP REST API using curl:
 
 <code>
 
->./CustomerTest.http
+>./FirstNameTest.http
 
 </code>

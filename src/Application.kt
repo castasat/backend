@@ -1,11 +1,14 @@
 package backend
 
 import backend.data.models.FirstNamesTable
+import backend.data.models.GendersTable
 import backend.data.models.LastNamesTable
 import backend.routes.firstNameRoute
+import backend.routes.genderRoute
 import backend.routes.lastNameRoute
 import backend.routes.rootRoute
 import backend.services.FirstNameService
+import backend.services.GenderService
 import backend.services.LastNameService
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -40,6 +43,7 @@ fun Application.module(testing: Boolean = false) {
         // TODO bind services here
         bindFirstNameService()
         bindLastNameService()
+        bindGenderService()
     }
 
     routing {
@@ -47,6 +51,7 @@ fun Application.module(testing: Boolean = false) {
         rootRoute()
         firstNameRoute()
         lastNameRoute()
+        genderRoute()
     }
 }
 
@@ -65,6 +70,7 @@ private fun createTables() = transaction {
     // TODO create tables here
     SchemaUtils.create(FirstNamesTable)
     SchemaUtils.create(LastNamesTable)
+    SchemaUtils.create(GendersTable)
 }
 
 // TODO extension functions
@@ -74,4 +80,8 @@ fun DI.MainBuilder.bindFirstNameService() {
 
 fun DI.MainBuilder.bindLastNameService() {
     bind<LastNameService>() with singleton { LastNameService() }
+}
+
+fun DI.MainBuilder.bindGenderService() {
+    bind<GenderService>() with singleton { GenderService() }
 }

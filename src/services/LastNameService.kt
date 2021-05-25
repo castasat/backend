@@ -3,11 +3,14 @@ package backend.services
 import backend.data.models.LastName
 import backend.data.models.LastNameEntity
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
+import org.jetbrains.exposed.sql.StdOutSqlLogger
+import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.jvm.Throws
 
 class LastNameService {
     fun getAllLastNames(): Collection<LastName> = transaction {
+        addLogger(StdOutSqlLogger)
         LastNameEntity.all()
             .map { lastNameEntity: LastNameEntity ->
                 lastNameEntity.toLastName()
@@ -15,6 +18,7 @@ class LastNameService {
     }
 
     fun addLastName(lastName: LastName) = transaction {
+        addLogger(StdOutSqlLogger)
         LastNameEntity.new {
             this.lastName = lastName.lastName
         }
@@ -22,11 +26,13 @@ class LastNameService {
 
     @Throws(EntityNotFoundException::class)
     fun deleteLastName(lastNameId: Long) = transaction {
+        addLogger(StdOutSqlLogger)
         LastNameEntity[lastNameId].delete()
     }
 
     @Throws(EntityNotFoundException::class)
     fun getLastName(lastNameId: Long) = transaction {
+        addLogger(StdOutSqlLogger)
         LastNameEntity[lastNameId].toLastName()
     }
 }

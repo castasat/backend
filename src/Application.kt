@@ -1,8 +1,12 @@
 package backend
 
 import backend.data.models.FirstNamesTable
+import backend.data.models.LastNamesTable
 import backend.routes.firstNameRoute
+import backend.routes.lastNameRoute
+import backend.routes.rootRoute
 import backend.services.FirstNameService
+import backend.services.LastNameService
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.tomcat.EngineMain
@@ -35,11 +39,14 @@ fun Application.module(testing: Boolean = false) {
     di {
         // TODO bind services here
         bindFirstNameService()
+        bindLastNameService()
     }
 
     routing {
         // TODO add routing here
+        rootRoute()
         firstNameRoute()
+        lastNameRoute()
     }
 }
 
@@ -57,8 +64,14 @@ fun Application.initDB() {
 private fun createTables() = transaction {
     // TODO create tables here
     SchemaUtils.create(FirstNamesTable)
+    SchemaUtils.create(LastNamesTable)
 }
 
+// TODO extension functions
 fun DI.MainBuilder.bindFirstNameService() {
     bind<FirstNameService>() with singleton { FirstNameService() }
+}
+
+fun DI.MainBuilder.bindLastNameService() {
+    bind<LastNameService>() with singleton { LastNameService() }
 }

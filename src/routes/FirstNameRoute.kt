@@ -12,22 +12,12 @@ import org.kodein.di.instance
 import org.kodein.di.ktor.di
 
 fun Routing.firstNameRoute() {
-    route("/") {
-        get {
-            call.respondText(
-                text = "Hello, Backend on Kotlin powered by Ktor on Tomcat!",
-                status = HttpStatusCode.OK
-            )
-        }
-
-        val firstNameService: FirstNameService by di().instance()
-
-        route("/first_name") {
-            handleGetAllFirstNames(firstNameService = firstNameService)
-            handlePostFirstName(firstNameService = firstNameService)
-            handleDeleteFirstName(firstNameService = firstNameService)
-            handleGetFirstName(firstNameService = firstNameService)
-        }
+    val firstNameService: FirstNameService by di().instance()
+    route("/first_name") {
+        handleGetAllFirstNames(firstNameService = firstNameService)
+        handlePostFirstName(firstNameService = firstNameService)
+        handleDeleteFirstName(firstNameService = firstNameService)
+        handleGetFirstName(firstNameService = firstNameService)
     }
 }
 

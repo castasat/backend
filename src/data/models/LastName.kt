@@ -6,6 +6,7 @@ import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.LongIdTable
+import org.jetbrains.exposed.sql.Column
 
 // data class for REST API
 @Serializable
@@ -17,7 +18,11 @@ data class LastName(
 // JDBC Expose Table with autoincrement long primary key
 object LastNamesTable : LongIdTable() {
     private const val LAST_NAME = "LAST_NAME"
-    val lastName = varchar(name = LAST_NAME, length = MAX_VARCHAR_LENGTH_CHARS)
+    val lastName: Column<String> =
+        varchar(
+            name = LAST_NAME,
+            length = MAX_VARCHAR_LENGTH_CHARS
+        )
 }
 
 // JDBC Expose DAO Entity representing Row in a Table

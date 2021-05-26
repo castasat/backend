@@ -1,12 +1,11 @@
 package backend
 
+import backend.data.models.BirthdaysTable
 import backend.data.models.FirstNamesTable
 import backend.data.models.GendersTable
 import backend.data.models.LastNamesTable
-import backend.routes.firstNameRoute
-import backend.routes.genderRoute
-import backend.routes.lastNameRoute
-import backend.routes.rootRoute
+import backend.routes.*
+import backend.services.BirthdayService
 import backend.services.FirstNameService
 import backend.services.GenderService
 import backend.services.LastNameService
@@ -44,6 +43,7 @@ fun Application.module(testing: Boolean = false) {
         bindFirstNameService()
         bindLastNameService()
         bindGenderService()
+        bindBirthdayService()
     }
 
     routing {
@@ -52,6 +52,7 @@ fun Application.module(testing: Boolean = false) {
         firstNameRoute()
         lastNameRoute()
         genderRoute()
+        birthdayRoute()
     }
 }
 
@@ -71,6 +72,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(FirstNamesTable)
     SchemaUtils.create(LastNamesTable)
     SchemaUtils.create(GendersTable)
+    SchemaUtils.create(BirthdaysTable)
 }
 
 // TODO extension functions
@@ -84,4 +86,8 @@ fun DI.MainBuilder.bindLastNameService() {
 
 fun DI.MainBuilder.bindGenderService() {
     bind<GenderService>() with singleton { GenderService() }
+}
+
+fun DI.MainBuilder.bindBirthdayService() {
+    bind<BirthdayService>() with singleton { BirthdayService() }
 }

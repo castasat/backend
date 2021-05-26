@@ -1,6 +1,7 @@
 package backend.data.models
 
-import kotlinx.serialization.Contextual
+import backend.data.serialization.LocalDateSerializer
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
@@ -11,10 +12,11 @@ import org.jetbrains.exposed.sql.`java-time`.date
 import java.time.LocalDate
 
 // data class for REST API
+@ExperimentalSerializationApi
 @Serializable
 data class Birthday(
     val birthdayId: Long,
-    @Contextual
+    @Serializable(with = LocalDateSerializer::class)
     val birthday: LocalDate
 )
 
@@ -28,6 +30,7 @@ object BirthdaysTable : LongIdTable() {
 }
 
 // JDBC Expose DAO Entity representing Row in a Table
+@ExperimentalSerializationApi
 class BirthdayEntity(private var birthdayId: EntityID<Long>) : LongEntity(id = birthdayId) {
     companion object : LongEntityClass<BirthdayEntity>(BirthdaysTable)
 

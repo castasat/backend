@@ -8,6 +8,7 @@
 # }
 ######################################
 curl --verbose --header "Content-Type: application/json" --data "{\"firstNameId\":1,\"firstName\":\"Denis\"}" http://localhost:8888/first_name
+#curl --verbose --header "Content-Type: application/json" --data "{\"birthdayId\":1,\"birthday\":\"1980-10-26\"}" http://localhost:8888/birthday
 
 ######################################
 # GET http://localhost:8888/

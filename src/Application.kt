@@ -16,6 +16,7 @@ import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.routing.*
 import io.ktor.serialization.*
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -29,6 +30,7 @@ const val HIKARI_CONFIG_KEY = "ktor.hikariconfig"
 
 fun main(args: Array<String>) = EngineMain.main(args)
 
+@ExperimentalSerializationApi
 @JvmOverloads
 fun Application.module(testing: Boolean = false) {
 

@@ -7,10 +7,12 @@ import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.kodein.di.instance
 import org.kodein.di.ktor.di
 
+@ExperimentalSerializationApi
 fun Routing.birthdayRoute() {
     val birthdayService: BirthdayService by di().instance()
     route("/birthday") {
@@ -35,7 +37,7 @@ private fun Route.handleGetAllBirthdays(birthdayService: BirthdayService) {
     }
 }
 
-
+@ExperimentalSerializationApi
 private fun Route.handlePostBirthday(birthdayService: BirthdayService) {
     post {
         val birthday = call.receive<Birthday>()

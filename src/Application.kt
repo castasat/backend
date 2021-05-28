@@ -41,6 +41,7 @@ fun Application.module(testing: Boolean = false) {
         bindGenderService()
         bindBirthdayService()
         bindCountryService()
+        bindRegionService()
     }
 
     routing {
@@ -51,6 +52,7 @@ fun Application.module(testing: Boolean = false) {
         genderRoute()
         birthdayRoute()
         countryRoute()
+        regionRoute()
     }
 }
 
@@ -72,6 +74,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(GendersTable)
     SchemaUtils.create(BirthdaysTable)
     SchemaUtils.create(CountriesTable)
+    SchemaUtils.create(RegionsTable)
 }
 
 // TODO extension functions
@@ -87,10 +90,15 @@ fun DI.MainBuilder.bindGenderService() {
     bind<GenderService>() with singleton { GenderService() }
 }
 
+@ExperimentalSerializationApi
 fun DI.MainBuilder.bindBirthdayService() {
     bind<BirthdayService>() with singleton { BirthdayService() }
 }
 
 fun DI.MainBuilder.bindCountryService() {
     bind<CountryService>() with singleton { CountryService() }
+}
+
+fun DI.MainBuilder.bindRegionService() {
+    bind<RegionService>() with singleton { RegionService() }
 }

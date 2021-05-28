@@ -2,12 +2,14 @@ package backend.services
 
 import backend.data.models.Birthday
 import backend.data.models.BirthdayEntity
+import kotlinx.serialization.ExperimentalSerializationApi
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.jvm.Throws
 
+@ExperimentalSerializationApi
 class BirthdayService {
     fun getAllBirthdays(): Collection<Birthday> = transaction {
         addLogger(StdOutSqlLogger)

@@ -1,14 +1,8 @@
 package backend
 
-import backend.data.models.BirthdaysTable
-import backend.data.models.FirstNamesTable
-import backend.data.models.GendersTable
-import backend.data.models.LastNamesTable
+import backend.data.models.*
 import backend.routes.*
-import backend.services.BirthdayService
-import backend.services.FirstNameService
-import backend.services.GenderService
-import backend.services.LastNameService
+import backend.services.*
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.tomcat.EngineMain
@@ -46,6 +40,7 @@ fun Application.module(testing: Boolean = false) {
         bindLastNameService()
         bindGenderService()
         bindBirthdayService()
+        bindCountryService()
     }
 
     routing {
@@ -55,6 +50,7 @@ fun Application.module(testing: Boolean = false) {
         lastNameRoute()
         genderRoute()
         birthdayRoute()
+        countryRoute()
     }
 }
 
@@ -75,6 +71,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(LastNamesTable)
     SchemaUtils.create(GendersTable)
     SchemaUtils.create(BirthdaysTable)
+    SchemaUtils.create(CountriesTable)
 }
 
 // TODO extension functions
@@ -92,4 +89,8 @@ fun DI.MainBuilder.bindGenderService() {
 
 fun DI.MainBuilder.bindBirthdayService() {
     bind<BirthdayService>() with singleton { BirthdayService() }
+}
+
+fun DI.MainBuilder.bindCountryService() {
+    bind<CountryService>() with singleton { CountryService() }
 }

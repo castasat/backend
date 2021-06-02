@@ -43,6 +43,7 @@ fun Application.module(testing: Boolean = false) {
         bindCountryService()
         bindRegionService()
         bindLocalityTypeService()
+        bindLocalityService()
     }
 
     routing {
@@ -55,6 +56,7 @@ fun Application.module(testing: Boolean = false) {
         countryRoute()
         regionRoute()
         localityTypeRoute()
+        localityRoute()
     }
 }
 
@@ -78,6 +80,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(CountriesTable)
     SchemaUtils.create(RegionsTable)
     SchemaUtils.create(LocalityTypesTable)
+    SchemaUtils.create(LocalitiesTable)
 }
 
 // TODO extension functions
@@ -108,4 +111,8 @@ fun DI.MainBuilder.bindRegionService() {
 
 fun DI.MainBuilder.bindLocalityTypeService() {
     bind<LocalityTypeService>() with singleton { LocalityTypeService() }
+}
+
+fun DI.MainBuilder.bindLocalityService() {
+    bind<LocalityService>() with singleton { LocalityService() }
 }

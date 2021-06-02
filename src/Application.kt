@@ -1,8 +1,15 @@
 package backend
 
-import backend.data.models.*
+import backend.data.models.user.*
+import backend.data.models.address.*
 import backend.routes.*
-import backend.services.*
+import backend.routes.address.*
+import backend.routes.user.*
+import backend.services.address.*
+import backend.services.user.BirthdayService
+import backend.services.user.FirstNameService
+import backend.services.user.GenderService
+import backend.services.user.LastNameService
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.tomcat.EngineMain

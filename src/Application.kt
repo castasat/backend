@@ -46,6 +46,7 @@ fun Application.module(testing: Boolean = false) {
         bindLocalityService()
         bindStreetService()
         bindBuildingService()
+        bindApartmentService()
     }
 
     routing {
@@ -61,6 +62,7 @@ fun Application.module(testing: Boolean = false) {
         localityRoute()
         streetRoute()
         buildingRoute()
+        apartmentRoute()
     }
 }
 
@@ -87,6 +89,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(LocalitiesTable)
     SchemaUtils.create(StreetsTable)
     SchemaUtils.create(BuildingsTable)
+    SchemaUtils.create(ApartmentsTable)
 }
 
 // TODO extension functions
@@ -129,4 +132,8 @@ fun DI.MainBuilder.bindStreetService() {
 
 fun DI.MainBuilder.bindBuildingService() {
     bind<BuildingService>() with singleton { BuildingService() }
+}
+
+fun DI.MainBuilder.bindApartmentService() {
+    bind<ApartmentService>() with singleton { ApartmentService() }
 }

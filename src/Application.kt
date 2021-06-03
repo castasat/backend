@@ -6,10 +6,7 @@ import backend.routes.*
 import backend.routes.address.*
 import backend.routes.user.*
 import backend.services.address.*
-import backend.services.user.BirthdayService
-import backend.services.user.FirstNameService
-import backend.services.user.GenderService
-import backend.services.user.LastNameService
+import backend.services.user.*
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.tomcat.EngineMain
@@ -19,6 +16,7 @@ import io.ktor.routing.*
 import io.ktor.serialization.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.Schema
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.kodein.di.DI
@@ -55,6 +53,7 @@ fun Application.module(testing: Boolean = false) {
         bindBuildingService()
         bindApartmentService()
         bindMetroStationService()
+        bindPatronymicService()
     }
 
     routing {
@@ -72,6 +71,7 @@ fun Application.module(testing: Boolean = false) {
         buildingRoute()
         apartmentRoute()
         metroStationRoute()
+        patronymicRoute()
     }
 }
 
@@ -100,6 +100,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(BuildingsTable)
     SchemaUtils.create(ApartmentsTable)
     SchemaUtils.create(MetroStationsTable)
+    SchemaUtils.create(PatronymicsTable)
 }
 
 // TODO extension functions
@@ -150,4 +151,8 @@ fun DI.MainBuilder.bindApartmentService() {
 
 fun DI.MainBuilder.bindMetroStationService() {
     bind<MetroStationService>() with singleton { MetroStationService() }
+}
+
+fun DI.MainBuilder.bindPatronymicService() {
+    bind<PatronymicService>() with singleton { PatronymicService() }
 }

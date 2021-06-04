@@ -54,6 +54,7 @@ fun Application.module(testing: Boolean = false) {
         bindApartmentService()
         bindMetroStationService()
         bindPatronymicService()
+        bindCoordinatesService()
     }
 
     routing {
@@ -72,6 +73,7 @@ fun Application.module(testing: Boolean = false) {
         apartmentRoute()
         metroStationRoute()
         patronymicRoute()
+        coordinatesRoute()
     }
 }
 
@@ -101,6 +103,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(ApartmentsTable)
     SchemaUtils.create(MetroStationsTable)
     SchemaUtils.create(PatronymicsTable)
+    SchemaUtils.create(CoordinatesTable)
 }
 
 // TODO extension functions
@@ -155,4 +158,8 @@ fun DI.MainBuilder.bindMetroStationService() {
 
 fun DI.MainBuilder.bindPatronymicService() {
     bind<PatronymicService>() with singleton { PatronymicService() }
+}
+
+fun DI.MainBuilder.bindCoordinatesService() {
+    bind<CoordinatesService>() with singleton { CoordinatesService() }
 }

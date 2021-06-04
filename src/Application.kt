@@ -56,6 +56,7 @@ fun Application.module(testing: Boolean = false) {
         bindPatronymicService()
         bindCoordinatesService()
         bindEntranceService()
+        bindEntranceCodeService()
     }
 
     routing {
@@ -76,6 +77,7 @@ fun Application.module(testing: Boolean = false) {
         patronymicRoute()
         coordinatesRoute()
         entranceRoute()
+        entranceCodeRoute()
     }
 }
 
@@ -107,6 +109,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(PatronymicsTable)
     SchemaUtils.create(CoordinatesTable)
     SchemaUtils.create(EntrancesTable)
+    SchemaUtils.create(EntranceCodesTable)
 }
 
 // TODO extension functions
@@ -169,4 +172,8 @@ fun DI.MainBuilder.bindCoordinatesService() {
 
 fun DI.MainBuilder.bindEntranceService() {
     bind<EntranceService>() with singleton { EntranceService() }
+}
+
+fun DI.MainBuilder.bindEntranceCodeService() {
+    bind<EntranceCodeService>() with singleton { EntranceCodeService() }
 }

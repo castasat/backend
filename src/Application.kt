@@ -1,12 +1,8 @@
 package backend
 
-import backend.data.models.user.*
-import backend.data.models.address.*
-import backend.routes.*
-import backend.routes.address.*
-import backend.routes.user.*
-import backend.services.address.*
-import backend.services.user.*
+import backend.data.api.routes.*
+import backend.data.database.tables.*
+import backend.data.repositories.*
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.tomcat.EngineMain
@@ -16,7 +12,6 @@ import io.ktor.routing.*
 import io.ktor.serialization.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.Schema
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.kodein.di.DI
@@ -40,7 +35,7 @@ fun Application.module(testing: Boolean = false) {
     install(ContentNegotiation) { json() }
 
     di {
-        // TODO bind services here
+        // TODO bind data.repositories here
         bindFirstNameService()
         bindLastNameService()
         bindGenderService()
@@ -114,66 +109,66 @@ private fun createTables() = transaction {
 
 // TODO extension functions
 fun DI.MainBuilder.bindFirstNameService() {
-    bind<FirstNameService>() with singleton { FirstNameService() }
+    bind<FirstNameRepository>() with singleton { FirstNameRepository() }
 }
 
 fun DI.MainBuilder.bindLastNameService() {
-    bind<LastNameService>() with singleton { LastNameService() }
+    bind<LastNameRepository>() with singleton { LastNameRepository() }
 }
 
 fun DI.MainBuilder.bindGenderService() {
-    bind<GenderService>() with singleton { GenderService() }
+    bind<GenderRepository>() with singleton { GenderRepository() }
 }
 
 @ExperimentalSerializationApi
 fun DI.MainBuilder.bindBirthdayService() {
-    bind<BirthdayService>() with singleton { BirthdayService() }
+    bind<BirthdayRepository>() with singleton { BirthdayRepository() }
 }
 
 fun DI.MainBuilder.bindCountryService() {
-    bind<CountryService>() with singleton { CountryService() }
+    bind<CountryRepository>() with singleton { CountryRepository() }
 }
 
 fun DI.MainBuilder.bindRegionService() {
-    bind<RegionService>() with singleton { RegionService() }
+    bind<RegionRepository>() with singleton { RegionRepository() }
 }
 
 fun DI.MainBuilder.bindLocalityTypeService() {
-    bind<LocalityTypeService>() with singleton { LocalityTypeService() }
+    bind<LocalityTypeRepository>() with singleton { LocalityTypeRepository() }
 }
 
 fun DI.MainBuilder.bindLocalityService() {
-    bind<LocalityService>() with singleton { LocalityService() }
+    bind<LocalityRepository>() with singleton { LocalityRepository() }
 }
 
 fun DI.MainBuilder.bindStreetService() {
-    bind<StreetService>() with singleton { StreetService() }
+    bind<StreetRepository>() with singleton { StreetRepository() }
 }
 
 fun DI.MainBuilder.bindBuildingService() {
-    bind<BuildingService>() with singleton { BuildingService() }
+    bind<BuildingRepository>() with singleton { BuildingRepository() }
 }
 
 fun DI.MainBuilder.bindApartmentService() {
-    bind<ApartmentService>() with singleton { ApartmentService() }
+    bind<ApartmentRepository>() with singleton { ApartmentRepository() }
 }
 
 fun DI.MainBuilder.bindMetroStationService() {
-    bind<MetroStationService>() with singleton { MetroStationService() }
+    bind<MetroStationRepository>() with singleton { MetroStationRepository() }
 }
 
 fun DI.MainBuilder.bindPatronymicService() {
-    bind<PatronymicService>() with singleton { PatronymicService() }
+    bind<PatronymicRepository>() with singleton { PatronymicRepository() }
 }
 
 fun DI.MainBuilder.bindCoordinatesService() {
-    bind<CoordinatesService>() with singleton { CoordinatesService() }
+    bind<CoordinatesRepository>() with singleton { CoordinatesRepository() }
 }
 
 fun DI.MainBuilder.bindEntranceService() {
-    bind<EntranceService>() with singleton { EntranceService() }
+    bind<EntranceRepository>() with singleton { EntranceRepository() }
 }
 
 fun DI.MainBuilder.bindEntranceCodeService() {
-    bind<EntranceCodeService>() with singleton { EntranceCodeService() }
+    bind<EntranceCodeRepository>() with singleton { EntranceCodeRepository() }
 }

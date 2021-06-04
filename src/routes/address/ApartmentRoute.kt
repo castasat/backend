@@ -11,7 +11,6 @@ import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.kodein.di.instance
 import org.kodein.di.ktor.di
 
-
 fun Routing.apartmentRoute() {
     val apartmentService: ApartmentService by di().instance()
     route("/apartment") {

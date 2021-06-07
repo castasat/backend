@@ -52,6 +52,7 @@ fun Application.module(testing: Boolean = false) {
         entranceCodeRoute()
         serviceTypeRoute()
         priceRoute()
+        currencyRoute()
         // TODO add routing here
     }
 }
@@ -66,7 +67,7 @@ fun Application.initDB() {
 }
 
 private fun createTables() = transaction {
-    with(SchemaUtils){
+    with(SchemaUtils) {
         create(FirstNamesTable)
         create(LastNamesTable)
         create(GendersTable)
@@ -85,12 +86,13 @@ private fun createTables() = transaction {
         create(EntranceCodesTable)
         create(ServiceTypesTable)
         create(PricesTable)
+        create(CurrenciesTable)
         // TODO create tables here
     }
 }
 
 @ExperimentalSerializationApi
-fun DI.MainBuilder.bindRepositories(){
+fun DI.MainBuilder.bindRepositories() {
     bind<FirstNameRepository>() with singleton { FirstNameRepository() }
     bind<LastNameRepository>() with singleton { LastNameRepository() }
     bind<GenderRepository>() with singleton { GenderRepository() }
@@ -109,5 +111,6 @@ fun DI.MainBuilder.bindRepositories(){
     bind<EntranceCodeRepository>() with singleton { EntranceCodeRepository() }
     bind<ServiceTypeRepository>() with singleton { ServiceTypeRepository() }
     bind<PriceRepository>() with singleton { PriceRepository() }
+    bind<CurrencyRepository>() with singleton { CurrencyRepository() }
     // TODO extension functions
 }

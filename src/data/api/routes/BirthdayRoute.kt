@@ -23,6 +23,7 @@ fun Routing.birthdayRoute() {
     }
 }
 
+@ExperimentalSerializationApi
 private fun Route.handleGetAllBirthdays(birthdayRepository: BirthdayRepository) {
     get {
         val allBirthdays = birthdayRepository.getAllBirthdays()
@@ -49,6 +50,7 @@ private fun Route.handlePostBirthday(birthdayRepository: BirthdayRepository) {
     }
 }
 
+@ExperimentalSerializationApi
 private fun Route.handleDeleteBirthday(birthdayRepository: BirthdayRepository) {
     delete("{birthdayId}") {
         val birthdayId = call.parameters["birthdayId"]
@@ -72,6 +74,7 @@ private fun Route.handleDeleteBirthday(birthdayRepository: BirthdayRepository) {
     }
 }
 
+@ExperimentalSerializationApi
 private fun Route.handleGetBirthday(birthdayRepository: BirthdayRepository) {
     get("{birthdayId}") {
         val birthdayId = call.parameters["birthdayId"]

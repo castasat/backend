@@ -52,6 +52,7 @@ fun Application.module(testing: Boolean = false) {
         bindEntranceRepository()
         bindEntranceCodeRepository()
         bindServiceTypeRepository()
+        bindPriceRepository()
         // TODO bind data.repositories here
     }
 
@@ -74,6 +75,7 @@ fun Application.module(testing: Boolean = false) {
         entranceRoute()
         entranceCodeRoute()
         serviceTypeRoute()
+        priceRoute()
         // TODO add routing here
     }
 }
@@ -107,6 +109,7 @@ private fun createTables() = transaction {
     SchemaUtils.create(EntrancesTable)
     SchemaUtils.create(EntranceCodesTable)
     SchemaUtils.create(ServiceTypesTable)
+    SchemaUtils.create(PricesTable)
     // TODO create tables here
 }
 
@@ -179,4 +182,7 @@ fun DI.MainBuilder.bindServiceTypeRepository() {
     bind<ServiceTypeRepository>() with singleton { ServiceTypeRepository() }
 }
 
+fun DI.MainBuilder.bindPriceRepository() {
+    bind<PriceRepository>() with singleton { PriceRepository() }
+}
 // TODO extension functions

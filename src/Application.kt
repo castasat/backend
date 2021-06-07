@@ -35,27 +35,27 @@ fun Application.module(testing: Boolean = false) {
     install(ContentNegotiation) { json() }
 
     di {
+        bindFirstNameRepository()
+        bindLastNameRepository()
+        bindGenderRepository()
+        bindBirthdayRepository()
+        bindCountryRepository()
+        bindRegionRepository()
+        bindLocalityTypeRepository()
+        bindLocalityRepository()
+        bindStreetRepository()
+        bindBuildingRepository()
+        bindApartmentRepository()
+        bindMetroStationRepository()
+        bindPatronymicRepository()
+        bindCoordinatesRepository()
+        bindEntranceRepository()
+        bindEntranceCodeRepository()
+        bindServiceTypeRepository()
         // TODO bind data.repositories here
-        bindFirstNameService()
-        bindLastNameService()
-        bindGenderService()
-        bindBirthdayService()
-        bindCountryService()
-        bindRegionService()
-        bindLocalityTypeService()
-        bindLocalityService()
-        bindStreetService()
-        bindBuildingService()
-        bindApartmentService()
-        bindMetroStationService()
-        bindPatronymicService()
-        bindCoordinatesService()
-        bindEntranceService()
-        bindEntranceCodeService()
     }
 
     routing {
-        // TODO add routing here
         rootRoute()
         firstNameRoute()
         lastNameRoute()
@@ -73,6 +73,8 @@ fun Application.module(testing: Boolean = false) {
         coordinatesRoute()
         entranceRoute()
         entranceCodeRoute()
+        serviceTypeRoute()
+        // TODO add routing here
     }
 }
 
@@ -88,7 +90,6 @@ fun Application.initDB() {
 }
 
 private fun createTables() = transaction {
-    // TODO create tables here
     SchemaUtils.create(FirstNamesTable)
     SchemaUtils.create(LastNamesTable)
     SchemaUtils.create(GendersTable)
@@ -105,70 +106,77 @@ private fun createTables() = transaction {
     SchemaUtils.create(CoordinatesTable)
     SchemaUtils.create(EntrancesTable)
     SchemaUtils.create(EntranceCodesTable)
+    SchemaUtils.create(ServiceTypesTable)
+    // TODO create tables here
 }
 
-// TODO extension functions
-fun DI.MainBuilder.bindFirstNameService() {
+fun DI.MainBuilder.bindFirstNameRepository() {
     bind<FirstNameRepository>() with singleton { FirstNameRepository() }
 }
 
-fun DI.MainBuilder.bindLastNameService() {
+fun DI.MainBuilder.bindLastNameRepository() {
     bind<LastNameRepository>() with singleton { LastNameRepository() }
 }
 
-fun DI.MainBuilder.bindGenderService() {
+fun DI.MainBuilder.bindGenderRepository() {
     bind<GenderRepository>() with singleton { GenderRepository() }
 }
 
 @ExperimentalSerializationApi
-fun DI.MainBuilder.bindBirthdayService() {
+fun DI.MainBuilder.bindBirthdayRepository() {
     bind<BirthdayRepository>() with singleton { BirthdayRepository() }
 }
 
-fun DI.MainBuilder.bindCountryService() {
+fun DI.MainBuilder.bindCountryRepository() {
     bind<CountryRepository>() with singleton { CountryRepository() }
 }
 
-fun DI.MainBuilder.bindRegionService() {
+fun DI.MainBuilder.bindRegionRepository() {
     bind<RegionRepository>() with singleton { RegionRepository() }
 }
 
-fun DI.MainBuilder.bindLocalityTypeService() {
+fun DI.MainBuilder.bindLocalityTypeRepository() {
     bind<LocalityTypeRepository>() with singleton { LocalityTypeRepository() }
 }
 
-fun DI.MainBuilder.bindLocalityService() {
+fun DI.MainBuilder.bindLocalityRepository() {
     bind<LocalityRepository>() with singleton { LocalityRepository() }
 }
 
-fun DI.MainBuilder.bindStreetService() {
+fun DI.MainBuilder.bindStreetRepository() {
     bind<StreetRepository>() with singleton { StreetRepository() }
 }
 
-fun DI.MainBuilder.bindBuildingService() {
+fun DI.MainBuilder.bindBuildingRepository() {
     bind<BuildingRepository>() with singleton { BuildingRepository() }
 }
 
-fun DI.MainBuilder.bindApartmentService() {
+fun DI.MainBuilder.bindApartmentRepository() {
     bind<ApartmentRepository>() with singleton { ApartmentRepository() }
 }
 
-fun DI.MainBuilder.bindMetroStationService() {
+fun DI.MainBuilder.bindMetroStationRepository() {
     bind<MetroStationRepository>() with singleton { MetroStationRepository() }
 }
 
-fun DI.MainBuilder.bindPatronymicService() {
+fun DI.MainBuilder.bindPatronymicRepository() {
     bind<PatronymicRepository>() with singleton { PatronymicRepository() }
 }
 
-fun DI.MainBuilder.bindCoordinatesService() {
+fun DI.MainBuilder.bindCoordinatesRepository() {
     bind<CoordinatesRepository>() with singleton { CoordinatesRepository() }
 }
 
-fun DI.MainBuilder.bindEntranceService() {
+fun DI.MainBuilder.bindEntranceRepository() {
     bind<EntranceRepository>() with singleton { EntranceRepository() }
 }
 
-fun DI.MainBuilder.bindEntranceCodeService() {
+fun DI.MainBuilder.bindEntranceCodeRepository() {
     bind<EntranceCodeRepository>() with singleton { EntranceCodeRepository() }
 }
+
+fun DI.MainBuilder.bindServiceTypeRepository() {
+    bind<ServiceTypeRepository>() with singleton { ServiceTypeRepository() }
+}
+
+// TODO extension functions

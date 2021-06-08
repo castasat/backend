@@ -1,7 +1,7 @@
-package backend.data.api.routes.service
+package backend.data.api.routes.price
 
-import backend.data.api.models.service.Price
-import backend.data.repositories.service.PriceRepository
+import backend.data.api.models.price.Price
+import backend.data.repositories.price.PriceRepository
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*

@@ -1,7 +1,7 @@
-package backend.data.database.entities.service
+package backend.data.database.entities.price
 
-import backend.data.api.models.service.Price
-import backend.data.database.tables.service.PricesTable
+import backend.data.api.models.price.Price
+import backend.data.database.tables.price.PricesTable
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID

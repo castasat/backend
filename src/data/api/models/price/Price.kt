@@ -1,4 +1,4 @@
-package backend.data.api.models.service
+package backend.data.api.models.price
 
 import kotlinx.serialization.Serializable
 

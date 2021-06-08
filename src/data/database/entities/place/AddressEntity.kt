@@ -7,7 +7,9 @@ import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 // JDBC Expose DAO Entity representing Row in a Table
-class AddressEntity(private var addressId: EntityID<Long>) : LongEntity(id = addressId) {
+class AddressEntity(
+    private var addressId: EntityID<Long>
+) : LongEntity(id = addressId) {
     companion object : LongEntityClass<AddressEntity>(AddressesTable)
 
     var placeTypeId: Long by AddressesTable.placeTypeId
@@ -52,7 +54,7 @@ class AddressEntity(private var addressId: EntityID<Long>) : LongEntity(id = add
                     "street = $street, " +
                     "building = $building, " +
                     "entrance = $entranceCode, " +
-                    "apartment = $apartment"
+                    "apartment = $apartment" +
                     ")"
         }
 }

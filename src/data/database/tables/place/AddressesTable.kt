@@ -1,6 +1,5 @@
 package backend.data.database.tables.place
 
-import backend.data.database.CommonConstants
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Column
 

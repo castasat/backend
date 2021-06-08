@@ -24,6 +24,7 @@ const val HIKARI_CONFIG_KEY = "ktor.hikariconfig"
 
 fun main(args: Array<String>) = EngineMain.main(args)
 
+@Suppress("UNUSED_PARAMETER")
 @ExperimentalSerializationApi
 @JvmOverloads
 fun Application.module(testing: Boolean = false) {
@@ -54,6 +55,7 @@ fun Application.module(testing: Boolean = false) {
         priceRoute()
         currencyRoute()
         paymentTypeRoute()
+        placeTypeRoute()
         // TODO add routing here
     }
 }
@@ -89,6 +91,7 @@ private fun createTables() = transaction {
         create(PricesTable)
         create(CurrenciesTable)
         create(PaymentTypesTable)
+        create(PlaceTypesTable)
         // TODO create tables here
     }
 }
@@ -115,5 +118,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<PriceRepository>() with singleton { PriceRepository() }
     bind<CurrencyRepository>() with singleton { CurrencyRepository() }
     bind<PaymentTypeRepository>() with singleton { PaymentTypeRepository() }
+    bind<PlaceTypeRepository>() with singleton { PlaceTypeRepository() }
     // TODO extension functions
 }

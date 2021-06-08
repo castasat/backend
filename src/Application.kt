@@ -53,6 +53,7 @@ fun Application.module(testing: Boolean = false) {
         serviceTypeRoute()
         priceRoute()
         currencyRoute()
+        paymentTypeRoute()
         // TODO add routing here
     }
 }
@@ -87,6 +88,7 @@ private fun createTables() = transaction {
         create(ServiceTypesTable)
         create(PricesTable)
         create(CurrenciesTable)
+        create(PaymentTypesTable)
         // TODO create tables here
     }
 }
@@ -112,5 +114,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<ServiceTypeRepository>() with singleton { ServiceTypeRepository() }
     bind<PriceRepository>() with singleton { PriceRepository() }
     bind<CurrencyRepository>() with singleton { CurrencyRepository() }
+    bind<PaymentTypeRepository>() with singleton { PaymentTypeRepository() }
     // TODO extension functions
 }

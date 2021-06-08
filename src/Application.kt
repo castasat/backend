@@ -1,8 +1,24 @@
 package backend
 
 import backend.data.api.routes.*
-import backend.data.database.tables.*
-import backend.data.repositories.*
+import backend.data.api.routes.payment.currencyRoute
+import backend.data.api.routes.payment.paymentTypeRoute
+import backend.data.api.routes.place.*
+import backend.data.api.routes.service.priceRoute
+import backend.data.api.routes.service.serviceTypeRoute
+import backend.data.api.routes.user.*
+import backend.data.database.tables.payment.CurrenciesTable
+import backend.data.database.tables.payment.PaymentTypesTable
+import backend.data.database.tables.place.*
+import backend.data.database.tables.service.PricesTable
+import backend.data.database.tables.service.ServiceTypesTable
+import backend.data.database.tables.user.*
+import backend.data.repositories.payment.CurrencyRepository
+import backend.data.repositories.payment.PaymentTypeRepository
+import backend.data.repositories.place.*
+import backend.data.repositories.service.PriceRepository
+import backend.data.repositories.service.ServiceTypeRepository
+import backend.data.repositories.user.*
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.tomcat.EngineMain

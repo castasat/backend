@@ -72,6 +72,7 @@ fun Application.module(testing: Boolean = false) {
         currencyRoute()
         paymentTypeRoute()
         placeTypeRoute()
+        addressRoute()
         // TODO add routing here
     }
 }
@@ -108,6 +109,7 @@ private fun createTables() = transaction {
         create(CurrenciesTable)
         create(PaymentTypesTable)
         create(PlaceTypesTable)
+        create(AddressesTable)
         // TODO create tables here
     }
 }
@@ -135,5 +137,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<CurrencyRepository>() with singleton { CurrencyRepository() }
     bind<PaymentTypeRepository>() with singleton { PaymentTypeRepository() }
     bind<PlaceTypeRepository>() with singleton { PlaceTypeRepository() }
+    bind<AddressRepository>() with singleton { AddressRepository() }
     // TODO extension functions
 }

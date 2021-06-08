@@ -5,6 +5,7 @@ import backend.data.api.routes.price.currencyRoute
 import backend.data.api.routes.payment.paymentTypeRoute
 import backend.data.api.routes.place.*
 import backend.data.api.routes.price.priceRoute
+import backend.data.api.routes.service.serviceRoute
 import backend.data.api.routes.service.serviceTypeRoute
 import backend.data.api.routes.user.*
 import backend.data.database.tables.price.CurrenciesTable
@@ -12,11 +13,13 @@ import backend.data.database.tables.payment.PaymentTypesTable
 import backend.data.database.tables.place.*
 import backend.data.database.tables.price.PricesTable
 import backend.data.database.tables.service.ServiceTypesTable
+import backend.data.database.tables.service.ServicesTable
 import backend.data.database.tables.user.*
 import backend.data.repositories.price.CurrencyRepository
 import backend.data.repositories.payment.PaymentTypeRepository
 import backend.data.repositories.place.*
 import backend.data.repositories.price.PriceRepository
+import backend.data.repositories.service.ServiceRepository
 import backend.data.repositories.service.ServiceTypeRepository
 import backend.data.repositories.user.*
 import com.zaxxer.hikari.HikariConfig
@@ -74,6 +77,7 @@ fun Application.module(testing: Boolean = false) {
         placeTypeRoute()
         addressRoute()
         userRoute()
+        serviceRoute()
         // TODO add routing here
     }
 }
@@ -112,6 +116,7 @@ private fun createTables() = transaction {
         create(PlaceTypesTable)
         create(AddressesTable)
         create(UsersTable)
+        create(ServicesTable)
         // TODO create tables here
     }
 }
@@ -141,5 +146,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<PlaceTypeRepository>() with singleton { PlaceTypeRepository() }
     bind<AddressRepository>() with singleton { AddressRepository() }
     bind<UserRepository>() with singleton { UserRepository() }
+    bind<ServiceRepository>() with singleton { ServiceRepository() }
     // TODO extension functions
 }

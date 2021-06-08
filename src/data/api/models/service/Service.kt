@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class Service(
     val serviceId: Long,
     val serviceType: ServiceType,
-    val duration: String
+    val serviceDuration: String
 )

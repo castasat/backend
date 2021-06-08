@@ -1,7 +1,7 @@
-package backend.data.repositories.payment
+package backend.data.repositories.price
 
-import backend.data.api.models.payment.Currency
-import backend.data.database.entities.payment.CurrencyEntity
+import backend.data.api.models.price.Currency
+import backend.data.database.entities.price.CurrencyEntity
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger

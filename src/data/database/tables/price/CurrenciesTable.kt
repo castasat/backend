@@ -1,4 +1,4 @@
-package backend.data.database.tables.payment
+package backend.data.database.tables.price
 
 import backend.data.database.CommonConstants
 import org.jetbrains.exposed.dao.id.LongIdTable

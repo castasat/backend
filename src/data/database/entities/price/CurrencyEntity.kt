@@ -1,7 +1,7 @@
-package backend.data.database.entities.payment
+package backend.data.database.entities.price
 
-import backend.data.api.models.payment.Currency
-import backend.data.database.tables.payment.CurrenciesTable
+import backend.data.api.models.price.Currency
+import backend.data.database.tables.price.CurrenciesTable
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID

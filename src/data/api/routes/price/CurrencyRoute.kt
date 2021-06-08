@@ -1,7 +1,7 @@
-package backend.data.api.routes.payment
+package backend.data.api.routes.price
 
-import backend.data.api.models.payment.Currency
-import backend.data.repositories.payment.CurrencyRepository
+import backend.data.api.models.price.Currency
+import backend.data.repositories.price.CurrencyRepository
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*

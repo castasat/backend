@@ -1,7 +1,7 @@
-package backend.data.repositories.service
+package backend.data.repositories.price
 
-import backend.data.api.models.service.Price
-import backend.data.database.entities.service.PriceEntity
+import backend.data.api.models.price.Price
+import backend.data.database.entities.price.PriceEntity
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger

@@ -9,16 +9,21 @@ import org.jetbrains.exposed.dao.id.EntityID
 // JDBC Expose DAO Entity representing Row in a Table
 class PriceEntity(private var priceId: EntityID<Long>) : LongEntity(id = priceId) {
     companion object : LongEntityClass<PriceEntity>(PricesTable)
+
+    var currencyId: Long by PricesTable.currencyId
     var price: String by PricesTable.price
 
-    override fun toString(): String =
-        "Price(" +
-                "price = $price" +
-                ")"
+    fun toPrice() = Price(
+        priceId = priceId.value,
+        currency = CurrencyEntity[currencyId].toCurrency(),
+        price = price
+    )
 
-    fun toPrice() =
-        Price(
-            priceId = priceId.value,
-            price = price
-        )
+    override fun toString(): String =
+        with(toPrice()){
+            "Price(" +
+                    "currency = $currency" +
+                    "price = $price" +
+                    ")"
+        }
 }

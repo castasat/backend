@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Price(
     val priceId: Long,
+    val currency: Currency,
     val price: String
 )

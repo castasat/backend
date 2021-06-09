@@ -20,6 +20,7 @@ class PriceRepository {
     fun addPrice(price: Price) = transaction {
         addLogger(StdOutSqlLogger)
         PriceEntity.new {
+            this.currencyId = price.currency.currencyId
             this.price = price.price
         }
     }

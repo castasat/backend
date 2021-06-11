@@ -1,6 +1,7 @@
 package backend
 
 import backend.data.api.routes.*
+import backend.data.api.routes.payment.paymentRoute
 import backend.data.api.routes.price.currencyRoute
 import backend.data.api.routes.payment.paymentTypeRoute
 import backend.data.api.routes.place.*
@@ -12,6 +13,7 @@ import backend.data.api.routes.service.serviceTypeRoute
 import backend.data.api.routes.user.*
 import backend.data.database.tables.price.CurrenciesTable
 import backend.data.database.tables.payment.PaymentTypesTable
+import backend.data.database.tables.payment.PaymentsTable
 import backend.data.database.tables.place.*
 import backend.data.database.tables.price.PricesTable
 import backend.data.database.tables.service.OffersTable
@@ -19,6 +21,7 @@ import backend.data.database.tables.service.OrdersTable
 import backend.data.database.tables.service.ServiceTypesTable
 import backend.data.database.tables.service.ServicesTable
 import backend.data.database.tables.user.*
+import backend.data.repositories.payment.PaymentRepository
 import backend.data.repositories.price.CurrencyRepository
 import backend.data.repositories.payment.PaymentTypeRepository
 import backend.data.repositories.place.*
@@ -86,6 +89,7 @@ fun Application.module(testing: Boolean = false) {
         serviceRoute()
         offerRoute()
         orderRoute()
+        paymentRoute()
         // TODO add routing here
     }
 }
@@ -127,6 +131,7 @@ private fun createTables() = transaction {
         create(ServicesTable)
         create(OffersTable)
         create(OrdersTable)
+        create(PaymentsTable)
         // TODO create tables here
     }
 }
@@ -159,5 +164,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<ServiceRepository>() with singleton { ServiceRepository() }
     bind<OfferRepository>() with singleton { OfferRepository() }
     bind<OrderRepository>() with singleton { OrderRepository() }
+    bind<PaymentRepository>() with singleton { PaymentRepository() }
     // TODO extension functions
 }

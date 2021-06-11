@@ -36,7 +36,7 @@ class OfferEntity(
                     "service = $service, " +
                     "price = $price, " +
                     "address = $address, " +
-                    "specialistUser = $specialistUser"
+                    "specialistUser = $specialistUser" +
                     ")"
         }
 }

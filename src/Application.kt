@@ -6,6 +6,7 @@ import backend.data.api.routes.payment.paymentTypeRoute
 import backend.data.api.routes.place.*
 import backend.data.api.routes.price.priceRoute
 import backend.data.api.routes.service.offerRoute
+import backend.data.api.routes.service.orderRoute
 import backend.data.api.routes.service.serviceRoute
 import backend.data.api.routes.service.serviceTypeRoute
 import backend.data.api.routes.user.*
@@ -14,6 +15,7 @@ import backend.data.database.tables.payment.PaymentTypesTable
 import backend.data.database.tables.place.*
 import backend.data.database.tables.price.PricesTable
 import backend.data.database.tables.service.OffersTable
+import backend.data.database.tables.service.OrdersTable
 import backend.data.database.tables.service.ServiceTypesTable
 import backend.data.database.tables.service.ServicesTable
 import backend.data.database.tables.user.*
@@ -22,6 +24,7 @@ import backend.data.repositories.payment.PaymentTypeRepository
 import backend.data.repositories.place.*
 import backend.data.repositories.price.PriceRepository
 import backend.data.repositories.service.OfferRepository
+import backend.data.repositories.service.OrderRepository
 import backend.data.repositories.service.ServiceRepository
 import backend.data.repositories.service.ServiceTypeRepository
 import backend.data.repositories.user.*
@@ -82,6 +85,7 @@ fun Application.module(testing: Boolean = false) {
         userRoute()
         serviceRoute()
         offerRoute()
+        orderRoute()
         // TODO add routing here
     }
 }
@@ -122,6 +126,7 @@ private fun createTables() = transaction {
         create(UsersTable)
         create(ServicesTable)
         create(OffersTable)
+        create(OrdersTable)
         // TODO create tables here
     }
 }
@@ -153,5 +158,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<UserRepository>() with singleton { UserRepository() }
     bind<ServiceRepository>() with singleton { ServiceRepository() }
     bind<OfferRepository>() with singleton { OfferRepository() }
+    bind<OrderRepository>() with singleton { OrderRepository() }
     // TODO extension functions
 }

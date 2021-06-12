@@ -12,8 +12,8 @@ import kotlinx.serialization.Serializable
 // data class for REST API
 @ExperimentalSerializationApi
 @Serializable
-data class SearchOffer(
-    val searchOfferId: Long,
+data class OfferSearch(
+    val offerSearchId: Long,
     val clientUser: User,
     val serviceType: ServiceType,
     val placeType: PlaceType,

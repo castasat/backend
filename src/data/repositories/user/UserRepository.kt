@@ -28,6 +28,7 @@ class UserRepository {
                 this.lastNameId = lastName.lastNameId
                 this.patronymicId = patronymic.patronymicId
                 this.genderId = gender.genderId
+                this.weightId = weight.weightId
                 this.birthdayId = birthday.birthdayId
                 this.addressId = address.addressId
             }

@@ -13,6 +13,7 @@ data class User(
     val lastName: LastName,
     val patronymic: Patronymic,
     val gender: Gender,
+    val weight: Weight,
     val birthday: Birthday,
     val address: Address
 )

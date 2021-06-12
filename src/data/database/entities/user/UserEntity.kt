@@ -18,6 +18,7 @@ class UserEntity(
     var lastNameId: Long by UsersTable.lastNameId
     var patronymicId: Long by UsersTable.patronymicId
     var genderId: Long by UsersTable.genderId
+    var weightId: Long by UsersTable.weightId
     var birthdayId: Long by UsersTable.birthdayId
     var addressId: Long by UsersTable.addressId
 
@@ -28,6 +29,7 @@ class UserEntity(
         lastName = LastNameEntity[lastNameId].toLastName(),
         patronymic = PatronymicEntity[patronymicId].toPatronymic(),
         gender = GenderEntity[genderId].toGender(),
+        weight = WeightEntity[weightId].toWeight(),
         birthday = BirthdayEntity[birthdayId].toBirthday(),
         address = AddressEntity[addressId].toAddress()
     )
@@ -40,6 +42,7 @@ class UserEntity(
                     "lastName = $lastName, " +
                     "patronymic = $patronymic, " +
                     "gender = $gender, " +
+                    "weight = $weight, " +
                     "birthday = $birthday, " +
                     "address = $address" +
                     ")"

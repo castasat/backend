@@ -9,6 +9,7 @@ object UsersTable : LongIdTable() {
     private const val LAST_NAME_ID = "LAST_NAME_ID"
     private const val PATRONYMIC_ID = "PATRONYMIC_ID"
     private const val GENDER_ID = "GENDER_ID"
+    private const val WEIGHT_ID = "WEIGHT_ID"
     private const val BIRTHDAY_ID = "BIRTHDAY_ID"
     private const val ADDRESS_ID = "ADDRESS_ID"
 
@@ -16,6 +17,7 @@ object UsersTable : LongIdTable() {
     val lastNameId: Column<Long> = long(name = LAST_NAME_ID)
     val patronymicId: Column<Long> = long(name = PATRONYMIC_ID)
     val genderId: Column<Long> = long(name = GENDER_ID)
+    val weightId: Column<Long> = long(name = WEIGHT_ID)
     val birthdayId: Column<Long> = long(name = BIRTHDAY_ID)
     val addressId: Column<Long> = long(name = ADDRESS_ID)
 }

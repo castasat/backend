@@ -90,6 +90,7 @@ fun Application.module(testing: Boolean = false) {
         offerRoute()
         orderRoute()
         paymentRoute()
+        weightRoute()
         // TODO add routing here
     }
 }
@@ -132,6 +133,7 @@ private fun createTables() = transaction {
         create(OffersTable)
         create(OrdersTable)
         create(PaymentsTable)
+        create(WeightsTable)
         // TODO create tables here
     }
 }
@@ -165,5 +167,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<OfferRepository>() with singleton { OfferRepository() }
     bind<OrderRepository>() with singleton { OrderRepository() }
     bind<PaymentRepository>() with singleton { PaymentRepository() }
+    bind<WeightRepository>() with singleton { WeightRepository() }
     // TODO extension functions
 }

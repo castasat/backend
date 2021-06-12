@@ -48,7 +48,7 @@ class OfferSearchEntity(
                     "minPrice = $minPrice, " +
                     "maxPrice = $maxPrice, " +
                     "paymentType = $paymentType, " +
-                    "specialistGender = $specialistGender, " +
+                    "specialistGender = $specialistGender" +
                     ")"
         }
 }

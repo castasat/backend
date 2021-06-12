@@ -6,6 +6,7 @@ import backend.data.api.routes.price.currencyRoute
 import backend.data.api.routes.payment.paymentTypeRoute
 import backend.data.api.routes.place.*
 import backend.data.api.routes.price.priceRoute
+import backend.data.api.routes.search.clientSearchRoute
 import backend.data.api.routes.search.offerSearchRoute
 import backend.data.api.routes.service.offerRoute
 import backend.data.api.routes.service.orderRoute
@@ -17,6 +18,7 @@ import backend.data.database.tables.payment.PaymentTypesTable
 import backend.data.database.tables.payment.PaymentsTable
 import backend.data.database.tables.place.*
 import backend.data.database.tables.price.PricesTable
+import backend.data.database.tables.search.ClientSearchesTable
 import backend.data.database.tables.search.OfferSearchesTable
 import backend.data.database.tables.service.OffersTable
 import backend.data.database.tables.service.OrdersTable
@@ -28,6 +30,7 @@ import backend.data.repositories.price.CurrencyRepository
 import backend.data.repositories.payment.PaymentTypeRepository
 import backend.data.repositories.place.*
 import backend.data.repositories.price.PriceRepository
+import backend.data.repositories.search.ClientSearchRepository
 import backend.data.repositories.search.OfferSearchRepository
 import backend.data.repositories.service.OfferRepository
 import backend.data.repositories.service.OrderRepository
@@ -95,6 +98,7 @@ fun Application.module(testing: Boolean = false) {
         paymentRoute()
         weightRoute()
         offerSearchRoute()
+        clientSearchRoute()
         // TODO add routing here
     }
 }
@@ -139,6 +143,7 @@ private fun createTables() = transaction {
         create(PaymentsTable)
         create(WeightsTable)
         create(OfferSearchesTable)
+        create(ClientSearchesTable)
         // TODO create tables here
     }
 }
@@ -174,5 +179,6 @@ fun DI.MainBuilder.bindRepositories() {
     bind<PaymentRepository>() with singleton { PaymentRepository() }
     bind<WeightRepository>() with singleton { WeightRepository() }
     bind<OfferSearchRepository>() with singleton { OfferSearchRepository() }
+    bind<ClientSearchRepository>() with singleton { ClientSearchRepository() }
     // TODO extension functions
 }

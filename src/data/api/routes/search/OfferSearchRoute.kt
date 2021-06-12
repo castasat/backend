@@ -50,6 +50,7 @@ private fun Route.handlePostOfferSearch(offerSearchRepository: OfferSearchReposi
     }
 }
 
+@ExperimentalSerializationApi
 private fun Route.handleDeleteOfferSearch(offerSearchRepository: OfferSearchRepository) {
     delete("{offerSearchId}") {
         val offerSearchId = call.parameters["offerSearchId"]
